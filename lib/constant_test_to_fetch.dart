@@ -16,6 +16,6 @@ const datafontSize = 28.0;
 const pkg1Name = "Gare Thiers";
 const horaire1 = "Ouvert 24h/7";
 
-const placePkg1 = '26 places disponibles';
+const placeText = 'places disponibles';
 const placeFontSize = 18.0;
 const placeLetterSpacing = 1.0;
