@@ -20,13 +20,17 @@ class Home extends StatelessWidget {
 
       //# to container other widget. Take size of widget inside, full size if empty
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end, //# stretch : ok pour un menu ?
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start, //# stretch : ok pour un menu ?
         children: <Widget>[
           Row(
-            children: <Widget>[
-              Text('Hello'),
-              Text(' world'),
+            children: [
+              Row(
+                children: <Widget>[
+                  Text('Hello'),
+                  Text(' world'),
+                ],
+              ),
             ],
           ),
           Container(
@@ -34,10 +38,12 @@ class Home extends StatelessWidget {
             color: Colors.cyan,
             child: Text("one"),
           ),
-          Container(
-            padding: EdgeInsets.all(30.0),
-            color: Colors.pinkAccent,
-            child: Text("two"),
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              color: Colors.pinkAccent,
+              child: Text("two"),
+            ),
           ),
           Container(
             padding: EdgeInsets.all(40.0),
