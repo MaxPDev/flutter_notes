@@ -17,41 +17,25 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
+
+      //# to container other widget. Take size of widget inside, full size if empty
       body: Column(
         children: [
-          Center(
-              child: Icon(
-            Icons.airport_shuttle,
-            color: Colors.lightBlue,
-            size: 50.0,
-          )
+          Container(
+            // padding: EdgeInsets.all(20.0),
+            // padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+            padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
+            margin: EdgeInsets.all(30.0),
+            //# background color
+            color: Colors.grey[400],
+            child: Text('Hello'),
           ),
 
-          //# on peut faire un ElevatedButton ou ElevatedButton.icon, idem avec TextButton
-          ElevatedButton.icon(
-            onPressed: () {print('elevated button'); print('add circle');}, 
-            icon: Icon(Icons.add_circle),
-            label: Text('add something (elevated)'),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 37, 197, 45)),
-              elevation: MaterialStateProperty.all<double>(14.0),
-              ),
-            // style: ButtonStyle()
-
-            ),
-          TextButton.icon(
-            onPressed: () {print('Email me');}, 
-            icon: Icon(Icons.mail), 
-            label: Text("Email me (textbutton)"),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 149, 33, 243))
-            )
-            ),
-            IconButton(
-              onPressed: () {print('IconButton pressed dude');}, 
-              icon: Icon(Icons.park_outlined),
-              color: Colors.amber
-              )
+          //# Like Container, without need of margin or color
+          Padding(
+            padding: EdgeInsets.all(90.0),
+            child: Text('Hello'),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
