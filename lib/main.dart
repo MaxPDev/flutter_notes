@@ -1,62 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:fr_piscadev_reminder/constant_test_to_fetch.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Home(),
+    home: ParkingCard(),
   ));
 }
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class ParkingCard extends StatelessWidget {
+  const ParkingCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("App Test"),
-        centerTitle: true,
-        backgroundColor: Colors.red[600],
-      ),
+        backgroundColor: Colors.grey[900],
+        appBar: AppBar(
+          title: const Text(titre),
+          centerTitle: true,
+          backgroundColor: Colors.grey[850],
 
-      //# to container other widget. Take size of widget inside, full size if empty
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start, //# stretch : ok pour un menu ?
-        children: <Widget>[
-          Row(
-            children: [
-              Row(
-                children: <Widget>[
-                  Text('Hello'),
-                  Text(' world'),
-                ],
-              ),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(20.0),
-            color: Colors.cyan,
-            child: Text("one"),
-          ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(30.0),
-              color: Colors.pinkAccent,
-              child: Text("two"),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(40.0),
-            color: Colors.amber,
-            child: Text("three"),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text('Clickaa'),
-        backgroundColor: Colors.red[600],
-      ),
-    );
+          //# Shadow
+          elevation: 0.0,
+        ),
+        body: Padding(
+            padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+            child: Column(
+              children: <Widget>[
+                Text(pkgName,
+                    style: TextStyle(
+                      color: pkgColor,
+                      letterSpacing: pkgLetterSpaceName,
+                    )),
+                Text(pkg1Name,
+                    style: TextStyle(
+                      color: pkg1Color,
+                      letterSpacing: pkgLetterSpaceName,
+                    )),
+              ],
+            )));
   }
 }
