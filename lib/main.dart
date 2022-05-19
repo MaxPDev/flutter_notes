@@ -35,7 +35,22 @@ class Home extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(90.0),
             child: Text('Hello'),
-          )
+          ),
+
+          //# Like Flexbox
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, //# spaceAround : espace double entre les éléments que sur les côtés
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text("hello world"),
+              TextButton(onPressed: () {print("pressed");}, child: Text("click"), style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 204, 187, 90)))),
+              Container(
+                color: Colors.cyan,
+                padding: EdgeInsets.all(30.0),
+                child: Text('container'),
+              )
+            ],
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
