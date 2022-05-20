@@ -5,6 +5,7 @@ import 'package:fr_piscadev_reminder/screens/loading.dart';
 
 void main() {
   runApp(MaterialApp(
+    //# on peut changer l'initial route pour travail sur un écran en particulier.
     initialRoute: '/home',
     routes: {
       //# context : keep where we are
