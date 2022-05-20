@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fr_piscadev_reminder/models/quote.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -17,10 +16,10 @@ class QuoteList extends StatefulWidget {
 
 class _QuoteListState extends State<QuoteList> {
 
-  List<Quote> quotes = [
-    Quote(author: "Max", text: "Flutter's constructor are not bad"),
-    Quote(author: "Nancy", text: "I wan't that app quickly and cheap"),
-    Quote(author: "Dupond", text: "I have nothing to say exepct what I just said"),
+  List<String> quotes = [
+    'Gare Thiers',
+    'Parking Carnot',
+    'Parking Léoplold'
   ];
 
   @override
@@ -29,16 +28,24 @@ class _QuoteListState extends State<QuoteList> {
       backgroundColor: Colors.grey[200],
 
       appBar: AppBar(
-        title: const Text('Quotes'),
+        title: Text('Quotes'),
         centerTitle: true,
         backgroundColor: Colors.redAccent,
       ),
 
       body: Column(
 
-        children: 
+        //! Important
+        //# list view or : map : for each  item, perform a function  (():function {} )
 
-        quotes.map((quote) => Text('${quote.text} - ${quote.author}')).toList(), //# {} because . : var.prop
+        children: 
+        // quotes.map((quote) {
+        //   return Text(quote);
+        // }).toList(), //# toList : turn into an interable list
+
+        //# autre syntax,on remplace le {} par => :
+
+        quotes.map((quote) => Text(quote)).toList(), // children : toList()
       )
     );
   }
