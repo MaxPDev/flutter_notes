@@ -6,8 +6,9 @@ class QuoteCard extends StatelessWidget {
 
   //? Should me final as it's not possible to have dynamical variable since it is stateless idget ?
   late Quote quote;
+  Function delete; // note final late ? but wtf ?
   
-  QuoteCard({required this.quote});
+  QuoteCard({required this.quote, required this.delete});
 
   // const QuoteCard({
   //   Key? key,
@@ -41,6 +42,16 @@ class QuoteCard extends StatelessWidget {
                 // letterSpacing: 3.0,
               ),
             ),
+                        SizedBox(
+              height: 8.0,
+            ),
+            TextButton.icon(
+              onPressed: () {
+                delete();
+              }, 
+              icon: Icon(Icons.delete), 
+              label:  const Text("Delete quote")
+              )
           ],
         ),
       ),
