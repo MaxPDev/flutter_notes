@@ -17,20 +17,12 @@ class _LoadingState extends State<Loading> {
       
       // instance.getTime(); to be able to write await in front of it, must be Future type:
       await instance.getTime(); // await knows when it's finished thanks to Future
+      print(instance.time);
 
-      // // we could also pass the object rather than map
-      Navigator.pushReplacementNamed(context, '/home', arguments: {
-        'location': instance.location,
-        'flag': instance.flag,
-        'time': instance.time 
+      // mettre à jour time
+      setState(() {
+        time = instance.time!;
       });
-
-      // we could also pass the object rather than map
-      // but no 'cause pushReplacementName remove this page, so the update.
-      Navigator.pushReplacementNamed(context, '/home', arguments: {
-        instance
-      });
-
 
   }
 
