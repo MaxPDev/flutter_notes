@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fr_piscadev_reminder/services/world_time.dart';
 
 class Loading extends StatefulWidget {
@@ -44,17 +43,11 @@ class _LoadingState extends State<Loading> {
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: 
-      Scaffold(
-        backgroundColor: Colors.blue[900],
-      body: Center(
-        child: SpinKitFadingCircle(
-        color: Colors.white,
-        size: 50.0,
-      )
-
-      )
+    return SafeArea(child: Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(50.0),
+        child: Text(time) // could be replaced with a circular icone.
+      ),
     ));
   }
 }
