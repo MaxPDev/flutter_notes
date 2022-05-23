@@ -27,9 +27,9 @@ class _LoadingState extends State<Loading> {
 
       // we could also pass the object rather than map
       // but no 'cause pushReplacementName remove this page, so the update.
-      Navigator.pushReplacementNamed(context, '/home', arguments: {
-        instance
-      });
+      // Navigator.pushReplacementNamed(context, '/home', arguments: {
+      //   instance
+      // });
 
 
   }

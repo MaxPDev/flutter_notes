@@ -1,5 +1,7 @@
 import 'package:http/http.dart';
-import 'dart:convert'; // to user jsonDecode
+import 'dart:convert';
+
+import 'package:intl/intl.dart'; // to user jsonDecode
 
 class WorldTime {
   String location; // location name for the UI
@@ -34,8 +36,9 @@ class WorldTime {
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
 
-      // set time property. getter ?
-      time = now.toString();
+      // set time property. Formatted with intl
+      time = DateFormat.jm().format(now);
+
     } catch (e) {
       print('caught error : $e');
 
