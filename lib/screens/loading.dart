@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert'; // to user jsonDecode
-
+import 'package:fr_piscadev_reminder/services/world_time.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -12,41 +10,36 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
-//# with http
-  void getTime() async {
+  String time = 'Loading';
 
-    // make the request
-    var uri_london =  Uri.parse('http://worldtimeapi.org/api/timezone/Europe/London');
-    Response resp = await get(uri_london);
-    Map date_london = jsonDecode(resp.body);
+  void setupWorldTime() async {
+      WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Berlin');
+      
+      // instance.getTime(); to be able to write await in front of it, must be Future type:
+      await instance.getTime(); // await knows when it's finished thanks to Future
+      print(instance.time);
 
-    // print(data_london);
+      // mettre à jour time
+      setState(() {
+        time = instance.time!;
+      });
 
-    String datetime = date_london['datetime'];
-    String offset = date_london['utc_offset'].substring(1,3);
-
-    print(datetime);
-    print(offset);
-
-    // create a DateTime object
-    DateTime now = DateTime.parse(datetime);
-
-    // It's not destructive, so now =
-    now = now.add(Duration(hours: int.parse(offset)));
-    print(now);
-    
   }
+
 
   @override
   void initState() {
     super.initState(); 
-    getTime();
+    setupWorldTime();
 
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: Text("loading")),
-    );
+    return SafeArea(child: Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(50.0),
+        child: Text(time) // could be replaced with a circular icone.
+      ),
+    ));
   }
 }
