@@ -20,11 +20,19 @@ class _HomeState extends State<Home> {
     //# No need to use setState : it's the first execution.
     data = ModalRoute.of(context)!.settings.arguments as Map;
     print(data);
+    bool isDayTime = data['isDayTime'];
+    // print(data['isDayTime'].runtimeType);
+    // print(isDayTime.runtimeType);
 
     // set background
-    String bgImage = data['isDaytime'] ? 'day.png' : 'night.png';
+    // night test
+    String bgImage = isDayTime ? 'day.png' : 'night.png';
+    
+    Color? bgColor = isDayTime ? Colors.blue : Colors.indigo[700];
 
     return Scaffold(
+      // background affectant l'arrière de la barre en haut
+      backgroundColor: bgColor,
       body: SafeArea(
         child: Container(
           // backgournd image
@@ -42,8 +50,15 @@ class _HomeState extends State<Home> {
                   onPressed: (() {
                     Navigator.pushNamed(context, '/location');
                   }), 
-                  icon: Icon(Icons.edit_location), 
-                  label: Text('Edit Location'),
+                  icon: Icon(
+                    Icons.edit_location,
+                    color: Colors.grey[300]
+                    ), 
+                  label: Text(
+                    'Edit Location',
+                    style: TextStyle(
+                      color: Colors.grey[300],
+                    )),
                   ),
                   SizedBox(height: 20.0),
                   Row(
@@ -53,7 +68,8 @@ class _HomeState extends State<Home> {
                         data['location'],
                         style: TextStyle(
                           fontSize: 28.0,
-                          letterSpacing: 2.0
+                          letterSpacing: 2.0,
+                          color: Colors.white
                          )),
                     ],
                   ),
@@ -63,7 +79,8 @@ class _HomeState extends State<Home> {
                   Text(
                     data['time'],
                     style: TextStyle(
-                      fontSize: 54.0
+                      fontSize: 54.0,
+                      color: Colors.white
                     )
                   )
               ],

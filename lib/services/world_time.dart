@@ -38,10 +38,10 @@ class WorldTime {
       now = now.add(Duration(hours: int.parse(offset)));
 
       // horaire jour/nuit éventuellement récupérable
-      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
+      // isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
 
       //#or
-      // isDaytime = now.hour > 6 && now.hour < 20;
+      isDayTime = now.hour > 6 && now.hour < 20;
 
       // set time property. Formatted with intl
       time = DateFormat.jm().format(now);
