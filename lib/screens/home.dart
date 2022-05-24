@@ -18,7 +18,10 @@ class _HomeState extends State<Home> {
 
     //# in build, because we need context"
     //# No need to use setState : it's the first execution.
-    data = ModalRoute.of(context)!.settings.arguments as Map;
+    //# Si vide, on reçoit les data de "loading". Sinon de la selection.
+    //# Lors de la selection, data est rempli. Le ternaire permet que la variable
+    //# ne soit pas réécrite avec les data venant du loading à chaque build
+    data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
     print(data);
     bool isDayTime = data['isDayTime'];
     // print(data['isDayTime'].runtimeType);
@@ -47,9 +50,24 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 TextButton.icon(
-                  onPressed: (() {
-                    Navigator.pushNamed(context, '/location');
-                  }), 
+
+                  //#  Fonction asynchrone, permettant d'utiliser le "await instance.getTime"
+                  //# dans choose_location.
+                  //# Dynamic car on ne sait pas quelles données arrivent.
+                  //# on met à jour les data avec setState
+                  onPressed: () async {
+                    // ne pas oublier le await !! sinon il s'en fout, les data restent vide
+                    dynamic result = await Navigator.pushNamed(context, '/location');
+                    print("smt");
+                    setState(() {
+                      data = {
+                        'time': result['time'],
+                        'location': result['location'],
+                        'isDayTime': result['isDayTime']
+                      };
+                      print('home : ${data['location']}');
+                    });
+                  }, 
                   icon: Icon(
                     Icons.edit_location,
                     color: Colors.grey[300]
